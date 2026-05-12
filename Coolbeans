@@ -1,0 +1,29 @@
+import "@/app/globals.css";
+import { AtmosphericEngine } from "@/lib/foundry";
+import SoundscapeEngine from "@/components/system/SoundscapeEngine";
+​export const metadata = {
+title: "STRONGHOLD // NOVA SCOTIA NODE",
+description: "Root Chronos Archive - Authorized Personnel Only",
+};
+​export default function RootLayout({
+children,
+}: {
+children: React.ReactNode;
+}) {
+return (
+<html lang="en" className="dark">
+<body className="antialiased selection:bg-cyan-500/30">
+{/* THE SYSTEM ENVIRONMENT */}
+<AtmosphericEngine />
+​{/* THE AUDIO LAYER */}
+<SoundscapeEngine />
+​{/* THE INTERFACE */}
+<div className="relative z-10">
+{children}
+</div>
+​{/* GLOBAL BORDER GRID */}
+<div className="fixed inset-0 border-[1px] border-white/[0.02] pointer-events-none m-4 md:m-8" />
+</body>
+</html>
+);
+}
