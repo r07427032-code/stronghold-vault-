@@ -1,0 +1,50 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+:root {
+/* System Palette */
+--bg-core: #020204;
+--bg-elevated: #08080a;
+/* Signal Colors */
+--signal-cyan: 34, 211, 238; /* 22d3ee */
+--signal-red: 122, 0, 0;
+--signal-amber: 245, 158, 11;
+/* Typography */
+--text-primary: rgba(255, 255, 255, 0.95);
+--text-muted: rgba(255, 255, 255, 0.35);
+--text-dim: rgba(255, 255, 255, 0.1);
+/* Borders & Rules */
+--border-subtle: rgba(255, 255, 255, 0.04);
+--border-active: rgba(var(--signal-cyan), 0.2);
+}
+@layer base {
+body {
+@apply bg-[var(--bg-core)] text-[var(--text-primary)] font-mono selection:bg-cyan-500/30 overflow-x-hidden;
+}
+}
+/* Global Atmosphere Components */
+.vault-scanlines {
+background: linear-gradient(
+to bottom,
+transparent 50%,
+rgba(0, 0, 0, 0.2) 50%
+);
+background-size: 100% 4px;
+pointer-events: none;
+}
+.noise-filter {
+filter: url(#noiseFilter);
+opacity: 0.03;
+pointer-events: none;
+}
+@keyframes signal-glitch {
+0% { transform: translate(0); }
+20% { transform: translate(-2px, 2px); }
+40% { transform: translate(-2px, -2px); }
+60% { transform: translate(2px, 2px); }
+80% { transform: translate(2px, -2px); }
+100% { transform: translate(0); }
+}
+.animate-signal-glitch {
+animation: signal-glitch 0.2s cubic-bezier(.25,.46,.45,.94) both infinite;
+}
